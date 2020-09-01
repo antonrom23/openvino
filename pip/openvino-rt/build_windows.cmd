@@ -1,3 +1,9 @@
 @echo off
 cd /d "%~dp0"
-python setup.py -q bdist_wheel  --plat-name=win_amd64
+python setup.py clean
+
+cd /d "%~dp0"
+python setup.py bdist_wheel --plat-name=win_amd64
+
+cd /d "%~dp0"
+python setup.py bdist_wheel --plat-name=manylinux1_x86_64

@@ -1,28 +1,35 @@
+import os
+import sys
 from pathlib import Path
 from setuptools import setup
 
 
-def find_data_files():
-    local_base_dir = Path("dll")
-    remote_base_dir = Path("Library/bin")
-    files = (f for f in local_base_dir.glob("**/*") if f.is_file())
-    data_files_tree = {}
-    for file in files:
-        remote_file = remote_base_dir / file.relative_to(local_base_dir)
-        remote_dir = str(remote_file.parent)
-        if remote_dir not in data_files_tree:
-            data_files_tree[remote_dir] = []
-        data_files_tree[remote_dir].append(str(file))
-    return list(data_files_tree.items())
+def find_data_files(src_dir):
+    local_base_dir = Path(src_dir)
+    data_files = []
+    for root, directories, filenames in os.walk(local_base_dir):
+        for filename in filenames:
+            data_files.append([os.path.relpath(root, local_base_dir), [os.path.join(root, filename)]])
+    return list(data_files)
+
+
+#parsing the arguments to define platform specific variables
+for arg in sys.argv[1:]:
+    if arg == "--plat-name=manylinux1_x86_64":
+        source_dir = r"sources/lin"
+    elif arg == "--plat-name=win_amd64":
+        source_dir = r"sources/win"
+    else:
+        source_dir = ''
 
 
 setup(
-    name="openvino_ie",
+    name="ov_ie",
     license="Apache License 2.0",
     author="Anton Romanov",
     author_email="anton.romanov@intel.com",
     version="2020.1.033.6",
     description="OpenVINO Runtime Libraries",
     zip_safe=False,
-    data_files=find_data_files(),
+    data_files=find_data_files(source_dir),
 )
