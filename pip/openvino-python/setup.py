@@ -56,10 +56,10 @@ source_dir = os.path.join(source_dir, python_version)
 
 setup(
     name="openvino_ie4py",
-    license="Apache License 2.0",
+    license="Proprietary - Intel", 
     author="Anton Romanov",
     author_email="anton.romanov@intel.com",
-    version="2020.1.033",
+    version="2021.1.1",
     description="OpenVINO Python binding",
     cmdclass={"build_ext": copy_ext},
     ext_modules=find_prebuilt_extensions(source_dir, content_pattern),
@@ -67,7 +67,6 @@ setup(
     package_dir={"": source_dir},
     zip_safe=False,
     install_requires=[
-        "openvino_ie==2021.1",
-        "openvino-tbb==2020.2"
+        "openvino_ie==2021.1.*",
     ],
 )

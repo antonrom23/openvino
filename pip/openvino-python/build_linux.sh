@@ -1,8 +1,10 @@
+#!/bin/bash
+
 set -e
 
-PYTHON35="/opt/python35/bin/python3"
-PYTHON36="/opt/python36/bin/python3"
-PYTHON37="/opt/python37/bin/python3"
+PYTHON35="/root/.pyenv/versions/3.5.9/bin/python3"
+PYTHON36="/root/.pyenv/versions/3.6.9/bin/python3"
+PYTHON37="/root/.pyenv/versions/3.7.7/bin/python3"
 
 if [ -f "${PYTHON35}" ]; then
     echo "Building wheel for Python"

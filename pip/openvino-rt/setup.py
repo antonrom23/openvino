@@ -24,12 +24,15 @@ for arg in sys.argv[1:]:
 
 
 setup(
-    name="ov_ie",
-    license="Apache License 2.0",
+    name="openvino_ie",
+    license="Proprietary - Intel", 
     author="Anton Romanov",
     author_email="anton.romanov@intel.com",
-    version="2020.1.033.6",
+    version="2021.1.1",
     description="OpenVINO Runtime Libraries",
     zip_safe=False,
     data_files=find_data_files(source_dir),
+    install_requires=[
+        "openvino-tbb==2020.2.*"
+    ],
 )
