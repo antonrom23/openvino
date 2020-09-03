@@ -1,9 +1,10 @@
-from distutils.errors import DistutilsSetupError
-from distutils.file_util import copy_file
 import os.path
+import sys
 from pathlib import Path
 from setuptools import setup, find_packages, Extension
 from setuptools.command.build_ext import build_ext
+from distutils.errors import DistutilsSetupError
+from distutils.file_util import copy_file
 
 
 class PrebuiltExtension(Extension):
@@ -39,19 +40,34 @@ def find_prebuilt_extensions(base_dir, ext_pattern):
     return extensions
 
 
-version = "2020.1.033.6"
+if sys.platform == "linux":
+    source_dir = r"sources/lin"
+    content_pattern = "**/*.so"
+elif sys.platform == "win32":
+    source_dir = r"sources/win"
+    content_pattern = "**/*.pyd"
+else:
+    print("Unsupported OS: {}, expected: {}".format(sys.platform, "linux, win32"))
+    exit(2)
+
+python_version = "python" + str(sys.version_info.major) + "." + str(sys.version_info.minor)
+source_dir = os.path.join(source_dir, python_version)
+
 
 setup(
     name="openvino_ie4py",
     license="Apache License 2.0",
     author="Anton Romanov",
     author_email="anton.romanov@intel.com",
-    version="2020.1.033.6",
+    version="2020.1.033",
     description="OpenVINO Python binding",
     cmdclass={"build_ext": copy_ext},
-    ext_modules=find_prebuilt_extensions("src", "**/*.pyd"),
-    packages=find_packages("src"),
-    package_dir={"": "src"},
+    ext_modules=find_prebuilt_extensions(source_dir, content_pattern),
+    packages=find_packages(source_dir),
+    package_dir={"": source_dir},
     zip_safe=False,
-    install_requires=["openvino_ie"],
+    install_requires=[
+        "openvino_ie==2021.1",
+        "openvino-tbb==2020.2"
+    ],
 )

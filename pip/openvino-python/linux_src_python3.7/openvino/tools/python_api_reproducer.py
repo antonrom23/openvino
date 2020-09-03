@@ -1,1 +1,0 @@
-../../../python3.5/openvino/tools/python_api_reproducer.py
