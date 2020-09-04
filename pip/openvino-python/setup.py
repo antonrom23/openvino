@@ -53,6 +53,9 @@ else:
 python_version = "python" + str(sys.version_info.major) + "." + str(sys.version_info.minor)
 source_dir = os.path.join(source_dir, python_version)
 
+# reading description from README.md
+with open("sources/docs/README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name="openvino_ie4py",
@@ -60,7 +63,9 @@ setup(
     author="Anton Romanov",
     author_email="anton.romanov@intel.com",
     version="2020.1.033",
-    description="OpenVINO Python binding",
+    description="Inference Engine Python* API",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     cmdclass={"build_ext": copy_ext},
     ext_modules=find_prebuilt_extensions(source_dir, content_pattern),
     packages=find_packages(source_dir),
