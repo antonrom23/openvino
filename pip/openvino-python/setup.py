@@ -59,10 +59,11 @@ with open("sources/docs/README.md", "r") as fh:
 
 setup(
     name="openvino_ie4py",
+    license="Proprietary - Intel", 
     license="Apache License 2.0",
     author="Anton Romanov",
     author_email="anton.romanov@intel.com",
-    version="2020.1.033",
+    version="2021.1.1",
     description="Inference Engine Python* API",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -72,7 +73,6 @@ setup(
     package_dir={"": source_dir},
     zip_safe=False,
     install_requires=[
-        "openvino_ie==2021.1",
-        "openvino-tbb==2020.2"
+        "openvino_ie==2021.1.*",
     ],
 )

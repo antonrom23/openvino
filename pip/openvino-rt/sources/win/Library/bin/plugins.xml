@@ -1,7 +1,5 @@
 <ie>
     <plugins>
-        <plugin name="GNA" location="GNAPlugin.dll">
-        </plugin>
         <plugin name="HETERO" location="HeteroPlugin.dll">
         </plugin>
         <plugin name="CPU" location="MKLDNNPlugin.dll">
