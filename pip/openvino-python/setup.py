@@ -26,6 +26,15 @@ class copy_ext(build_ext):
             copy_file(src, dst, verbose=self.verbose, dry_run=self.dry_run)
 
 
+def find_data_files(src_dir):
+    local_base_dir = Path(src_dir)
+    data_files = []
+    for root, directories, filenames in os.walk(local_base_dir):
+        for filename in filenames:
+            data_files.append([os.path.relpath(root, local_base_dir), [os.path.join(root, filename)]])
+    return list(data_files)
+
+
 def find_prebuilt_extensions(base_dir, ext_pattern):
     extensions = []
     for path in Path(base_dir).glob(ext_pattern):
@@ -54,27 +63,28 @@ else:
     exit(2)
 
 python_version = "python" + str(sys.version_info.major) + "." + str(sys.version_info.minor)
-source_dir = os.path.join(source_dir, python_version)
+runtime_dir = os.path.join(source_dir, "runtime")
+binding_dir = os.path.join(source_dir, python_version)
 
 # reading description from README.md
 with open("sources/docs/README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="openvino",
+    author_email="openvino_pushbot@intel.com",
+    name="openvino_python",
     license="Proprietary - Intel", 
-    author="Anton Romanov",
-    author_email="anton.romanov@intel.com",
-    version="2021.1.080",
+    author="Intel Corporation",
     description="Inference Engine Python* API",
     long_description=long_description,
     long_description_content_type="text/markdown",
     cmdclass={"build_ext": copy_ext},
-    ext_modules=find_prebuilt_extensions(source_dir, content_pattern),
-    packages=find_packages(source_dir),
-    package_dir={"": source_dir},
+    ext_modules=find_prebuilt_extensions(binding_dir, content_pattern),
+    packages=find_packages(binding_dir),
+    package_dir={"": binding_dir},
+    data_files=find_data_files(runtime_dir),
     zip_safe=False,
     install_requires=[
-        "openvino_ie==2021.1.*",
+        "tbb==2020.2.*"
     ],
 )

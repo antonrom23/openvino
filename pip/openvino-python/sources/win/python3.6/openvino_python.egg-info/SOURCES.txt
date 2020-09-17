@@ -1,0 +1,13 @@
+setup.py
+sources/win/python3.6/openvino_python.egg-info/PKG-INFO
+sources/win/python3.6/openvino_python.egg-info/SOURCES.txt
+sources/win/python3.6/openvino_python.egg-info/dependency_links.txt
+sources/win/python3.6/openvino_python.egg-info/not-zip-safe
+sources/win/python3.6/openvino_python.egg-info/requires.txt
+sources/win/python3.6/openvino_python.egg-info/top_level.txt
+sources/win/python3.6/openvino/__init__.py
+sources/win/python3.6/openvino/inference_engine/__init__.py
+sources/win/python3.6/openvino/inference_engine/constants.pyd
+sources/win/python3.6/openvino/inference_engine/ie_api.pyd
+sources/win/python3.6/openvino_python.egg-info/SOURCES.txt
+sources/win/runtime/Library/bin/plugins.xml
