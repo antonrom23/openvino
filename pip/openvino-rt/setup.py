@@ -19,6 +19,8 @@ for arg in sys.argv[1:]:
         source_dir = r"sources/lin"
     elif arg == "--plat-name=win_amd64":
         source_dir = r"sources/win"
+    elif arg == "--plat-name=macosx_10_15_x86_64":
+        source_dir = r"sources/macos_10_15"    
     else:
         source_dir = ''
 
@@ -31,13 +33,13 @@ setup(
     license="Proprietary - Intel", 
     author="Anton Romanov",
     author_email="anton.romanov@intel.com",
-    version="2021.1.1",
+    version="2021.1.081",
     description="OpenVINO™ toolkit",
     long_description_content_type="text/markdown",
     long_description=long_description,
     zip_safe=False,
     data_files=find_data_files(source_dir),
     install_requires=[
-        "openvino-tbb==2020.2.*"
+        "tbb"
     ],
 )

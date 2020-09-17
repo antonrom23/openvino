@@ -46,8 +46,11 @@ if sys.platform == "linux":
 elif sys.platform == "win32":
     source_dir = r"sources/win"
     content_pattern = "**/*.pyd"
+elif sys.platform == "darwin":
+    source_dir = r"sources/macos_10_15"
+    content_pattern = "**/*.so"    
 else:
-    print("Unsupported OS: {}, expected: {}".format(sys.platform, "linux, win32"))
+    print("Unsupported OS: {}, expected: {}".format(sys.platform, "linux, win32, darwin"))
     exit(2)
 
 python_version = "python" + str(sys.version_info.major) + "." + str(sys.version_info.minor)
@@ -58,12 +61,11 @@ with open("sources/docs/README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="openvino_ie4py",
+    name="openvino",
     license="Proprietary - Intel", 
-    license="Apache License 2.0",
     author="Anton Romanov",
     author_email="anton.romanov@intel.com",
-    version="2021.1.1",
+    version="2021.1.080",
     description="Inference Engine Python* API",
     long_description=long_description,
     long_description_content_type="text/markdown",
