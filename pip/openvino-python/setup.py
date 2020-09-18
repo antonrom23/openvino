@@ -71,6 +71,7 @@ with open("sources/docs/README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
+    version=os.getenv('VERSION'),
     author_email="openvino_pushbot@intel.com",
     name="openvino_python",
     license="Proprietary - Intel", 
@@ -85,6 +86,6 @@ setup(
     data_files=find_data_files(runtime_dir),
     zip_safe=False,
     install_requires=[
-        "tbb==2020.2.*"
+        "tbb>=2020.2.*"
     ],
 )

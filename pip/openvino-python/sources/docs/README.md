@@ -1,10 +1,10 @@
-# Inference Engine Python* API
+## OpenVINO™ Toolkit
 
-This API provides a simplified interface for Inference Engine functionality that allows you to:
+OpenVINO™ toolkit quickly deploys applications and solutions that emulate human vision. Based on Convolutional Neural Networks (CNNs), the toolkit extends computer vision (CV) workloads across Intel® hardware, maximizing performance. The OpenVINO™ toolkit includes the Deep Learning Deployment Toolkit (DLDT).
 
-* Handle the models
-* Load and configure Inference Engine plugins based on device names
-* Perform inference in synchronous and asynchronous modes with arbitrary number of infer requests (the number of infer requests may be limited by target device capabilities)
+OpenVINO™ toolkit:
 
-## API Reference
-For the complete API Reference, see  [Inference Engine Python* API Reference](ie_python_api/annotated.html)
+- Enables CNN-based deep learning inference on the edge
+- Supports heterogeneous execution across an Intel® CPU, Intel® Integrated Graphics, Intel® FPGA,  Intel® Neural Compute Stick 2 and Intel® Vision Accelerator Design with Intel® Movidius™ VPUs
+- Speeds time-to-market via an easy-to-use library of computer vision functions and pre-optimized kernels
+- Includes optimized calls for computer vision standards, including OpenCV\* and OpenCL™
