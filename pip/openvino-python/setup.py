@@ -67,8 +67,9 @@ runtime_dir = os.path.join(source_dir, "runtime")
 binding_dir = os.path.join(source_dir, python_version)
 
 # reading description from README.md
-with open("sources/docs/README.md", "r") as fh:
+with open("sources/docs/README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
+
 
 setup(
     version=os.getenv('VERSION'),
