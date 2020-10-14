@@ -88,5 +88,6 @@ setup(
     zip_safe=False,
     install_requires=[
         "tbb>=2020.2.*"
+        "numpy==1.16.3"
     ],
 )
