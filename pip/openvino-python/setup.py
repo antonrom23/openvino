@@ -87,7 +87,7 @@ setup(
     data_files=find_data_files(runtime_dir),
     zip_safe=False,
     install_requires=[
-        "tbb>=2020.2.*"
+        "tbb>=2020.2.*",
         "numpy==1.16.3"
     ],
 )
