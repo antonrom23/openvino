@@ -4,8 +4,8 @@ set -e
 PYTHON36="/root/.pyenv/versions/3.6.9/bin/python3"
 PYTHON37="/root/.pyenv/versions/3.7.7/bin/python3"
 
-export VERSION=2021.1
-export BUILD=092
+export VERSION=2021.2
+export BUILD=165
 
 if [ -f "${PYTHON36}" ]; then
     echo "Building wheel for Python"

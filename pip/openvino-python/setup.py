@@ -74,7 +74,7 @@ with open("sources/docs/README.md", "r", encoding="utf-8") as fh:
 setup(
     version=os.getenv('VERSION'),
     author_email="openvino_pushbot@intel.com",
-    name="openvino_python",
+    name="openvino",
     license="Proprietary - Intel", 
     author="Intel Corporation",
     description="Inference Engine Python* API",
@@ -88,6 +88,6 @@ setup(
     zip_safe=False,
     install_requires=[
         "tbb>=2020.2.*",
-        "numpy==1.16.3"
+        "numpy>=1.16.3"
     ],
 )
