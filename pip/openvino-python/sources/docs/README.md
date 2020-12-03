@@ -21,7 +21,7 @@ Operating Systems:
    ```
 2. Install the Intel® distribution of OpenVINO™ toolkit:
    ```sh
-   pip install openvino-python
+   pip install openvino
    ```
 3. Add PATH to environment variables.
  - Ubuntu* 18.04 and macOS*:
